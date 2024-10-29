@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'Acceuil.dart';
+import 'Contact.dart';
+import 'Propos.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +17,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'hello flutter'),
+      home: MyHomePage(title: 'hello flutter'),
+      initialRoute: '/',
+      routes: {
+        '/acc': (context) => Acceuil(),
+        '/con': (context) => Contact(),
+        '/pro': (context) => Propos(),
+      },
     );
   }
 }
@@ -67,22 +76,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         floatingActionButton: Container(
-            width: 100,
-            height: 50,
-            child: FloatingActionButton(
+          width: 100,
+          height: 50,
+          child: FloatingActionButton(
               onPressed: () {
-                print("clic!!");
+                Navigator.pushNamed(context, '/acc');
               },
-              tooltip: 'ajouter',
-              backgroundColor: Colors.green,
-              child: //Icon(Icons.accessible_outlined)),
-                  const Text(
-                'EXO 2>>>>>',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
-              ),
-            )));
+              tooltip: 'EXO2',
+              hoverColor: Colors.blueAccent,
+              backgroundColor: Colors.indigo,
+              child: Icon(
+                Icons.skip_next,
+                color: Colors.red,
+              )),
+        ));
   }
 }
